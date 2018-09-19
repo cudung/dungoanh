@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -36,4 +39,32 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function post_login(Request $request) {
+
+
+        $email = $request->input('email');
+        $password = md5($request->input('password'));
+        echo $email;
+        echo $password;
+
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            echo 123;
+            return redirect()->intended('dashboard');
+        }
+    }
+
+    public function rule() {
+        $rule = [
+            'email' => 'required',
+            'password' => 'required'
+        ];
+        return $rule;
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect('/login');
+    }
+
 }
