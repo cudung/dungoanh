@@ -12,9 +12,15 @@
 */
 
 // Route::get('user/{id}', 'ShowProfile/__invoke');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/product', 'HomeController@product');
-Route::post('login', 'Auth\LoginController@post_login');
+
+Route::post('register', 'Auth\RegisterController@register');
+
+Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/add_product', 'Product@add_product');
 
