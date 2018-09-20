@@ -44,12 +44,9 @@ class LoginController extends Controller
 
 
         $email = $request->input('email');
-        $password = md5($request->input('password'));
-        echo $email;
-        echo $password;
-
+        $password = $request->input('password');
+        $request->validate($this->rule());
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            echo 123;
             return redirect()->intended('dashboard');
         }
     }

@@ -18,9 +18,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/product', 'HomeController@product');
 Route::post('login', 'Auth\LoginController@post_login');
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::post('register', 'Auth\RegisterController@register');

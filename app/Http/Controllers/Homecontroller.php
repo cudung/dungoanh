@@ -21,10 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Product_model $model)
+    public function index()
     {
-        $product = $model->get_product();
-        echo '<pre>';print_r($product);
         return view('home');
     }
 
