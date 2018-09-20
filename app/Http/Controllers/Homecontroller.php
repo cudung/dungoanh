@@ -24,7 +24,6 @@ class HomeController extends Controller
     public function index(Product_model $model)
     {
         $product = $model->get_product();
-        echo '<pre>';print_r($product);
         return view('home');
     }
 

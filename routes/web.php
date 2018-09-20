@@ -24,3 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('register', 'Auth\RegisterController@register');
+
+Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/add_product', 'Product@add_product');
